@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<tables>
+	<!-- Locations of rgi database in the required format -->
+    <table name="rgi_databases" comment_char="#">
+        <columns>value, name, path</columns>
+        <file path="tool-data/rgi_databases.loc" />
+    </table>
+</tables>

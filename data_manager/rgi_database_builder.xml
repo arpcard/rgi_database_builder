@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<tool id="rgi_database_builder" name="rgi_database_builder" tool_type="manage_data" version="1.0.0">
+    <description>database builder</description>
+    <requirements>
+        <requirement type="package" version="2.7">python</requirement>
+        <requirement type="package" version="3.1.1">rgi</requirement>
+        <requirement type="package" version=">=0.8.24">diamond</requirement>
+        <requirement type="package" version=">=2.5.0">makeblastdb</requirement>
+    </requirements>
+    <stdio>
+        <exit_code description="Error" level="fatal" range="1:" />
+    </stdio>
+    <command interpreter="python">
+    <![CDATA[
+        rgi_database_builder.py --out "${out_file}"
+        #if $name:
+            --name "${name}"
+        #end if
+        #if $url:
+            --url "${url}"
+        #end if        
+    ]]>
+    </command>
+    <inputs>
+        <param name="name" type="text" value="" label="Name for this database" help="Name for this database, or leave blank for today's date" optional="True"/>
+        <param name="url" type="text" value="" label="Url" help="Url for the CARD data e.g http://devcard.mcmaster.ca/download/0/broadstreet-v1.1.1.tar.gz" optional="True"/>
+    </inputs>
+    <outputs>
+        <data format="data_manager_json" name="out_file"  label="${tool.name} (JSON)"/>
+    </outputs>
+</tool>

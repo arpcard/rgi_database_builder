@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<data_managers>
+    <data_manager tool_file="data_manager/rgi_database_builder.xml" id="rgi_database_builder" version="1.0.0">
+        <!-- Defines a Data Table to be modified. -->
+        <data_table name="rgi_databases">
+            <!-- Handle the output of the Data Manager Tool -->
+            <output>
+                <!-- columns that are going to be specified by the Data Manager Tool -->
+                <column name="value" /> 
+                <column name="name" />
+                <!-- The value of this column will be modified based upon data in "out_file". example value "phiX.fa" -->
+                <column name="path" output_ref="out_file" > 
+                    <move type="directory" relativize_symlinks="True"> <!-- Moving a file from the extra files path of "out_file" -->
+                        <!-- File name within the extra files path -->
+                        <!--<source>${path}</source> -->
+                        <!-- Target Location to store the file, directories are created as needed -->
+                        <target base="${GALAXY_DATA_MANAGER_DATA_PATH}">rgi_databases/${value}/${path}</target> 
+                    </move>
+                    <!-- Store this value in the final Data Table -->
+                    <value_translation>${GALAXY_DATA_MANAGER_DATA_PATH}/rgi_databases/${value}/${path}</value_translation>
+                    <value_translation type="function">abspath</value_translation>
+                </column>
+            </output>
+        </data_table>
+    </data_manager>
+</data_managers>

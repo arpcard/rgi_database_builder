@@ -1,0 +1,9 @@
+categories: 
+- Data Managers
+description: This tool loads new CARD data into Resistance Gene Identifier (RGI) tool
+long_description: This tool loads new CARD data into Resistance Gene Identifier (RGI)
+  tool
+name: rgi_database_builder
+owner: amos
+remote_repository_url: https://github.com/arpcard/rgi_database_builder
+type: unrestricted
